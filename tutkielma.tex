@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage[toc,page]{appendix}
+
 \renewcommand\emph{\textbf}
 \addto\captionsfinnish{\renewcommand{\bibname}{Lähteet}}
 \linespread{1.3}
@@ -24,31 +25,172 @@
 
   \chapter{Johdanto}
 
-  Jotain.
-
+  % Mitä: Somalia on kehitysmaa, ongelmia: ruokaa ei ole tarpeeksi jne,
+  % ongelmien mallintamiseksi tämä simulaatio
+  
+  Somalia on afrikkalainen kehitysmaa, jolla ei ole ollut 1990-luvun jälkeen
+  toimivaa hallitusta. Eräs sen lukuisista ongelmista on se, että ruokaa ei ole
+  tarpeeksi kaikille, johtaen nälänhätään, kulkutautien leviämiseen, ja ihmisten
+  kuolemiseen. Tutkimuskysymyksemme on, kuinka paljon ruokaa pelloilta tulee
+  tietyissä olosuhteissa.
+  
+  Tämä malli on toteutettu osana mallikokonaisuutta, jossa mallinnetaan
+  humanitaarisen avustuksen vaikutusta Somalian tilanteeseen. Ruoan tuotantoon
+  liittyvät ilmasto-, vesi-, logistiikka- ja karttamallit.
+  
+  Esimerkki mallin käytöstä: avustusjärjestö haluaa tietää, miten se saisi
+  autettua ihmisiä mahdollisimman tehokkaasti rajatuilla resursseilla. Järjestö
+  pyörittää simulaatiota usein alkuarvoin, ja katsoo, millaisia tuloksia tulee
+  milläkin alkuarvoilla. Järjestö voi käyttää näitä tietoja hyväkseen
+  päätöksenteossaan.
+  
+  % Ruokaa ei tarpeeksi → nälänhätä → kulkutauteja → ihmisiä kuolee → Ongelma.
+  
+  % Miksi ei karjataloutta tms
+  
+  % Miksi: tulevaisuuden mallintaminen ja ennustaminen (Somalia! Suomen
+  % nälkävuodet!), humanitaarisen avustuksen vaikutukset, ihmiskärsimyksen
+  % vähentäminen 
+  
+  % Ilmiön idea (Somaliassa kasvatetaan ruokaa. Tätä pitää mallintaa.)
+  
+  % tulevaisuuden ennustaminen on kivaa – miksi?
+  
   \chapter{Aineisto ja menetelmät}
 
   \section{Ilmiö}
 
+  Maatalous on järjestelmällistä kasvin kasvattamista suurella mittakaavalla.
+
+  % maatalous yleisesti ^
+
+  Roosa Räty on tutkinut, mitä Somaliassa syödään. [viittaus!] Käytimme hänen
+  tuloksiaan valitessamme kasvilajikkeita tutkittavaksi.
+  
+  Kasvien kasvamiseen vaikuttavat muun muassa sääolosuhteet (sadanta, lämpötila,
+  auringonvalon määrä) ja maaperän pH. Nämä tekijät olemme huomioineet
+  mallissamme. Jokaisella on optimiarvo, josta poiketessa sadon määrä laskee.
+
+  Olemme todenneet mitättömiksi ja jättäneet huomiotta muun muassa lehtien
+  pinta-alan, haihtumisen, juurien tiheyde, leveyspiirin ja tuulen vaikutukset
+  satoon. Keskitymme myös maatalouteen, joten olemme jättäneet Somalian
+  karjatalouden huomioimatta.
+  
+  % on-off: rankkasateet, tulvat, 
+  
   \section{Malli}
+
+  Malli ottaa alkuarvoikseen sademäärän, lämpötilan, auringonvalon määrän ja
+  maaperän pH:n. Jokainen muunnetaan prosenttikertoimeksi kasvatetun kasvin
+  mukaan. Sadon määrä saadaan kaavalla
+
+  \begin{em}
+  $ \text{sato} = (\text{pinta-ala}) \times (\text{teoreettinen maksimisato per
+  alueyksikko}) \times (\text{viikkokerrointen keskiarvo}) $\end{em}
+  jossa jokainen viikkokerroin saadaan kaavalla
+
+  \begin{em}
+  $ \text{viikkokerroin} = (\text{vesikerroin}) \times (\text{lämpökerroin})
+  \times (\text{valokerroin}) \times (\text{pHkerroin}) $\end{em}
+
+  % funktioiden kuvaus
+
+  % Lyhyt kuvaus jokaisesta mahdollisesta viljelyskasvista; maissi, vehnä, durra
+
+  % Perustelut juuri näille parametreille, kuvaus parametreistä, kuvaus,
+  % merkitys, mahdolliset arvot, yksikkö → teoreettiset minimi- ja maksimiarvot
+  % sadolle
+
+  \subsection{Maissi}
+
+  Maissi on kasvi, joka tuottaa yleensä keltaisia siemeniä. Siemenet ovat
+  syötävä osa, loput kasvista jätetään syömättä. Maissi tarvitsee kostean ja
+  ravinteikkaan maaperän. Sille ideaali vesimäärä olisi \cite{cropwater} mukaan
+  keskimäärin 0.29 cm/vrk; annoimme parametrillemme vaihteluvälin 0.145 cm/vrk
+  – 0.425 cm/vrk. \cite{ugandamaize} ja \cite{plessismaize} antavat maissille
+  eri kasvulämpötiloja (5$^{\circ}$C – 42$^{\circ}$C ja 10$^{\circ}$C –
+  32$^{\circ}$C). Mallinnuksen helpottamiseksi olemme valinneet
+  lämpötilajakaumaksi 20$^{\circ}$C – 40$^{\circ}$C, optimi 30$^{\circ}$C.
+  Maissille sopiva pH on välillä 5.5 – 7.0 \cite{corngrowing}. Käytämme
+  ideaalina näiden keskiarvoa 6.25. Auringonvalolle arvioimme optimiksi
+  8h/päivä, jakauma 6-10 tuntia päivässä. Maissi kasvaa 18 viikossa.
+
+  \subsection{Vehnä}
+
+  Vehnä on Suomessakin kasvava vilja. Sille ideaalilämpötila olisi 19$^{\circ}$C
+  - 25$^{\circ}$C \cite{wheat}, valitsimme optimiksemme 22$^{\circ}$C. Käytämme
+  pH:n jakaumana 6-7:ää \cite{wheatfert}, optimi 6,5. Veden ideaalimäärä olisi
+  0.31 cm/vrk \cite{cropwater}, jakauma  0.155 – 0.465 cm/vrk. \cite{growwheat}
+  mukaan vehnä tarvitsisi noin 6 tuntia auringonvaloa päivässä. Vehnä kasvaa
+  noin 15 viikossa. citation needed
+
+  \subsection{Durra}
+
+  vesi 0.38 cm/vrk \cite{cropwater}.
+
+  kasvaa noin 18 viikossa
 
   \chapter{Tulos}
-  Havaittiin että Somaliassa syödään maissia \cite{maize}.
 
-  \section{Malli}
+  \section{Mallin käyttö simulaatiossa}
+
+  Jotain, jotain, koodi, malli -$>$ koodiprosessi + koodin kuvailu
 
   \section{Testiajot}
 
+  kauniita kuvia
+
   \chapter{Johtopäätökset}
+
+  malli hyvä, koska
+  
+  paitsi että täyttä kuraa (kesken, yksinkertaistettu), asiat A-Ö, 1-9 ja
+  loputkin huonosti parametroitu tai jätetty huomiotta jne; karjatalous!
+  tarvitsee enemmän/parempaa lähtödataa
+  
+  siitä huolimatta: auttaa ymmärtämistä, osa kokonaisuutta, toimii ihan OK
 
   \begin{thebibliography}{9}
 
-    \bibitem{maize}
-    Jéan du Plessis,
+    \bibitem{cropwater}
+    Wright \& Killer.
+    \emph{Average water use for multiple crops}.
+    2002.
+    Haettu \today. \\
+    http://www.extension.umn.edu/distribution/cropsystems/components/DC1322a.pdf
+
+    \bibitem{ugandamaize}
+    Ministry of Agriculture, Uganda.
+    \emph{Maize production}.
+
+    \bibitem{plessismaize}
+    Jéan du Plessis.
     \emph{Maize production}.
     Haettu \today. \\
-    http://www.arc.agric.za/arc-gci/Fact\%20Sheets\%20Library/Maize-infopak.pdf.
+    http://www.arc.agric.za/arc-gci/Fact\%20Sheets\%20Library/Maize-infopak.pdf
 
+    \bibitem{corngrowing}
+    Joku.
+    \emph{Corn Growing and Harvest Information}.
+    Haettu \today. \\
+    http://veggieharvest.com/vegetables/corn.html
+
+    \bibitem{wheat}
+    Exploring the Environment Team.
+    \emph{Wheat}.
+    Haettu \today. \\
+    http://www.cotf.edu/ete/modules/climate/GCwheat3.html
+
+    \bibitem{wheatfert}
+    M. L. Vitosh.
+    \emph{Wheat Fertility and Fertilization}.
+
+    \bibitem{growwheat}
+    GrowingAnything.com.
+    \emph{How to Grow Wheat}.
+    Haettu \today. \\
+    http://www.growinganything.com/how-to-grow-wheat.html
+        
   \end{thebibliography}
 
   \begin{appendices}
