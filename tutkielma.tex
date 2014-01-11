@@ -5,8 +5,12 @@
 \usepackage[toc,page]{appendix}
 
 \renewcommand\emph{\textbf}
-\addto\captionsfinnish{\renewcommand{\bibname}{Lähteet}}
-\linespread{1.3}
+\addto\captionsfinnish{
+  \renewcommand{\bibname}{Lähteet}
+  \renewcommand{\appendixname}{Liitteet}
+  \renewcommand{\appendixpagename}{Liitteet}
+}
+\renewcommand\appendixtocname{Liitteet}
 
 \title{Mulla on nälkä!}
 \subtitle{Ruoan tuotanto Somaliassa hörpäkkeiden funktiona}
