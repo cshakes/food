@@ -3,6 +3,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage[toc,page]{appendix}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
 
 \renewcommand\emph{\textbf}
 \addto\captionsfinnish{
@@ -11,11 +13,12 @@
   \renewcommand{\appendixpagename}{Liitteet}
 }
 \renewcommand\appendixtocname{Liitteet}
+\linespread{1.3}
 
 \title{Mulla on nälkä!}
 \subtitle{Ruoan tuotanto Somaliassa hörpäkkeiden funktiona}
 \author{Jaakko Hannikainen \and Cliona Shakespeare}
-\date{}
+\date{\today}
 \publishers{Valkeakosken Tietotien lukio / Päivölän Kansanopisto\\
             Tieteenala: Mallintaminen}
 \begin{document}
@@ -47,6 +50,8 @@
   pyörittää simulaatiota usein alkuarvoin, ja katsoo, millaisia tuloksia tulee
   milläkin alkuarvoilla. Järjestö voi käyttää näitä tietoja hyväkseen
   päätöksenteossaan.
+
+  \includegraphics[width=10cm]{projectmap.png}
   
   % Ruokaa ei tarpeeksi → nälänhätä → kulkutauteja → ihmisiä kuolee → Ongelma.
   
@@ -118,6 +123,7 @@
   Maissille sopiva pH on välillä 5.5 – 7.0 \cite{corngrowing}. Käytämme
   ideaalina näiden keskiarvoa 6.25. Auringonvalolle arvioimme optimiksi
   8h/päivä, jakauma 6-10 tuntia päivässä. Maissi kasvaa 18 viikossa.
+  Maksimiarvomme sadolle on 8 tonnia hehtaaria kohden \cite{iita}.
 
   \subsection{Vehnä}
 
@@ -126,13 +132,18 @@
   pH:n jakaumana 6-7:ää \cite{wheatfert}, optimi 6,5. Veden ideaalimäärä olisi
   0.31 cm/vrk \cite{cropwater}, jakauma  0.155 – 0.465 cm/vrk. \cite{growwheat}
   mukaan vehnä tarvitsisi noin 6 tuntia auringonvaloa päivässä. Vehnä kasvaa
-  noin 15 viikossa. citation needed
+  noin 15 viikossa. Vehnää tulee maksimiarvona noin 8 tonnia hehtaaria kohden
+  \cite{sri}.
 
   \subsection{Durra}
 
-  vesi 0.38 cm/vrk \cite{cropwater}.
-
-  kasvaa noin 18 viikossa
+  Durra on viljalaji, joko kasvaa trooppisissa ja subtrooppisissa ilmastoissa.
+  Sen vedentarve on noin 0.38 cm/vrk \cite{cropwater}, jakauma 0.19 –
+  0.57 cm/vrk. Durran ideaalilämpötila on 20-40$^{\circ}$C [10], optimina
+  käytimme näiden keskiarvoa 30$^{\circ}$C. Sille ideaali pH-jakauma olisi 5-8.5
+  \cite{moench}, käytämme optimina keskiarvoa 6.75. Auringonvalolle arvioimme
+  optimiksi 8h/päivä, jakauma 6 – 10 tuntia päivässä. Durra kasvaa noin 18
+  viikossa. Sen teoreettinen maksimisato on 3 tonnia / hehtaari \cite{wylie}.
 
   \chapter{Tulos}
 
@@ -161,7 +172,7 @@
     \emph{Average water use for multiple crops}.
     2002.
     Haettu \today. \\
-    http://www.extension.umn.edu/distribution/cropsystems/components/DC1322a.pdf
+    \url{http://www.extension.umn.edu/distribution/cropsystems/components/DC1322a.pdf}
 
     \bibitem{ugandamaize}
     Ministry of Agriculture, Uganda.
@@ -171,19 +182,31 @@
     Jéan du Plessis.
     \emph{Maize production}.
     Haettu \today. \\
-    http://www.arc.agric.za/arc-gci/Fact\%20Sheets\%20Library/Maize-infopak.pdf
+    \url{http://www.arc.agric.za/arc-gci/Fact%20Sheets%20Library/Maize-infopak.pdf}
+
+    \bibitem{iita}
+    IITA.
+    \emph{Research to Nourish Africa, Maize}.
+    Haettu \today. \\
+    \url{http://old.iita.org/cms/details/maize_project_details.aspx?zoneid=63&articleid=273}
+
+    \bibitem{sri}
+    Joku.
+    \emph{Cultivating Wheat With SRI}.
+    Joskus.
+    Jossakin.
 
     \bibitem{corngrowing}
     Joku.
     \emph{Corn Growing and Harvest Information}.
     Haettu \today. \\
-    http://veggieharvest.com/vegetables/corn.html
+    \url{http://veggieharvest.com/vegetables/corn.html}
 
     \bibitem{wheat}
     Exploring the Environment Team.
     \emph{Wheat}.
     Haettu \today. \\
-    http://www.cotf.edu/ete/modules/climate/GCwheat3.html
+    \url{http://www.cotf.edu/ete/modules/climate/GCwheat3.html}
 
     \bibitem{wheatfert}
     M. L. Vitosh.
@@ -193,8 +216,24 @@
     GrowingAnything.com.
     \emph{How to Grow Wheat}.
     Haettu \today. \\
-    http://www.growinganything.com/how-to-grow-wheat.html
+    \url{http://www.growinganything.com/how-to-grow-wheat.html}
         
+    \bibitem{peacock}
+    J. M. Peacock.
+    \emph{Response and Tolerance of Sorghum to Temperature Stress}.
+    Joskus.
+
+    \bibitem{moench}
+    Food and Agriculture Organisation.
+    \emph{Sorghum bicolor (L) Moench}.
+    Haettu \today. \\
+    \url{http://www.fao.org/ag/agp/agpc/doc/gbase/data/pf000319.htm}
+
+    \bibitem{wylie}
+    Peter Wylie.
+    \emph{Managing sorghum for high yields}.
+    Joskus.
+
   \end{thebibliography}
 
   \begin{appendices}
