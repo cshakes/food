@@ -1,4 +1,5 @@
 \documentclass[12pt]{scrreprt}
+\usepackage[T1]{fontenc}
 \usepackage[finnish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -69,7 +70,8 @@
 
   \section{Ilmiö}
 
-  Maatalous on järjestelmällistä kasvin kasvattamista suurella mittakaavalla.
+  Maatalous on järjestelmällistä kasvin kasvattamista suurella mittakaavalla
+  ihmistarpeeseen.
 
   % maatalous yleisesti ^
 
@@ -85,7 +87,8 @@
   satoon. Keskitymme myös maatalouteen, joten olemme jättäneet Somalian
   karjatalouden huomioimatta.
   
-  % on-off: rankkasateet, tulvat, 
+  Lisäksi olemme huomioineet tiettyjä tilanteita, jotka aiheuttavat sen, että
+  sato kuolee. Näitä ovat rankkasateet ja tulvat.
   
   \section{Malli}
 
@@ -110,7 +113,7 @@
   % merkitys, mahdolliset arvot, yksikkö → teoreettiset minimi- ja maksimiarvot
   % sadolle
 
-  \subsection{Maissi}
+  \subsection{Viljelykasvit}
 
   Maissi on kasvi, joka tuottaa yleensä keltaisia siemeniä. Siemenet ovat
   syötävä osa, loput kasvista jätetään syömättä. Maissi tarvitsee kostean ja
@@ -125,8 +128,6 @@
   8h/päivä, jakauma 6-10 tuntia päivässä. Maissi kasvaa 18 viikossa.
   Maksimiarvomme sadolle on 8 tonnia hehtaaria kohden \cite{iita}.
 
-  \subsection{Vehnä}
-
   Vehnä on Suomessakin kasvava vilja. Sille ideaalilämpötila olisi 19$^{\circ}$C
   - 25$^{\circ}$C \cite{wheat}, valitsimme optimiksemme 22$^{\circ}$C. Käytämme
   pH:n jakaumana 6-7:ää \cite{wheatfert}, optimi 6,5. Veden ideaalimäärä olisi
@@ -134,8 +135,6 @@
   mukaan vehnä tarvitsisi noin 6 tuntia auringonvaloa päivässä. Vehnä kasvaa
   noin 15 viikossa. Vehnää tulee maksimiarvona noin 8 tonnia hehtaaria kohden
   \cite{sri}.
-
-  \subsection{Durra}
 
   Durra on viljalaji, joko kasvaa trooppisissa ja subtrooppisissa ilmastoissa.
   Sen vedentarve on noin 0.38 cm/vrk \cite{cropwater}, jakauma 0.19 –
@@ -145,11 +144,35 @@
   optimiksi 8h/päivä, jakauma 6 – 10 tuntia päivässä. Durra kasvaa noin 18
   viikossa. Sen teoreettinen maksimisato on 3 tonnia / hehtaari \cite{wylie}.
 
+  \subsection{Maidon tuotanto}
+  450-kiloinen lehmä tuottaa \cite{milk} mukaan maitoa kaavalla
+  
+  \begin{em}
+  $ \text{maidon määrä (kg)} = 0.3375 \times \text{ruoan määrä (kg)}
+  + 8.325\text{kg} $ \end{em}
+
+  Arvioimme, että hehtaarille mahtuisi noin kymmenen lehmää. Mallissamme lehmien
+  määrä lisääntyy kahdella prosentilla vuosittain. Maidon tuotanto lasketaan
+  kokonaisista lehmistä, eli jos lehmiä olisi 2.63, maitoa tulisi kahden lehmän
+  verran.
+
   \chapter{Tulos}
 
   \section{Mallin käyttö simulaatiossa}
 
-  Jotain, jotain, koodi, malli -$>$ koodiprosessi + koodin kuvailu
+  Päätimme varioida maissin ja durran kasvun optimilämpötiloja ja -vesimääriä.
+  Tällä pystyimme simuloimaan mahdollisten geeniviljeltyjen lajikkeiden
+  vaikutusta Somalian olohin.
+
+  Vaihteluväli lämpötilan optimille oli molemmissa tapauksissa 30-40$^{\circ}$C,
+  siten että lämpötilajaauman ääriarvot olivat 10$^{\circ}$ päässä optimista.
+  Maissille vesimäärän optimin vaihteluväli oli 1.5-3 cm/vk, durralle
+  2-3.5cm/vk. Veden minimi oli 0.5 $\times$ optimi ja maksimi oli 1.5 $\times$
+  optimi.
+
+  koodi
+
+  malli to koodiprosessi + koodin kuvailu
 
   \section{Testiajot}
 
@@ -233,6 +256,12 @@
     Peter Wylie.
     \emph{Managing sorghum for high yields}.
     Joskus.
+
+    \bibitem{milk}
+    Beth Wheeler.
+    \emph{Guidlines to Feeding Dairy Cows}.
+    Haettu \today.
+    \url{http://en.engormix.com/MA-dairy-cattle/management/articles/guidelines-feeding-dairy-cows-t49/124-p0.htm}
 
   \end{thebibliography}
 
