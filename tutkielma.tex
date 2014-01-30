@@ -26,7 +26,24 @@
   \maketitle
 
   \begin{abstract}
-    Tässä tutkitaan ruokaa Somaliassa ja silleen.
+    Climate change will have a definite impact on humanitarian aid. To find out how climate change would affect aid, a What If? Network was created to generate results by data farming. Our responsibility was the agriculture model.
+The model takes data on the week's average temperature, cumulative rainfall and sunlight, and the soil's acidity, then transforms these into coefficients, from which a weekly coefficient is made using the following formula:
+  \begin{em}
+  $ \text{viikkokerroin} = (\text{vesikerroin}) \times (\text{lämpökerroin})
+  \times (\text{valokerroin}) \times (\text{pHkerroin}) $\end{em}
+
+The total crop yield is calculated using the following formula:
+  \begin{em}
+  $ \text{sato} = (\text{pinta-ala}) \times (\text{teoreettinen maksimisato per
+  alueyksikko}) \times (\text{viikkokerrointen keskiarvo}) $\end{em}
+
+Each crop has its own coefficient conversion formulae.
+We have also simulated the milk production of cows:
+\begin{em}
+  $ \text{maidon määrä (kg)} = 0.3375 \times \text{ruoan määrä (kg)}
+  + 8.325\text{kg} $ \end{em}
+
+(results)
   \end{abstract}
 
   \tableofcontents
@@ -39,19 +56,10 @@
   Maailman kriisialueilla avustusjärjestöt haluavat tietää, miten ne saisivat 
   autettua ihmisiä mahdollisimman tehokkaasti rajatuilla resursseilla. Tätä 
   varten olemme osallistuneet mallintamisprojektiin \cite{scythe}, jossa mallinnetaan
-  ilmastonmuutoksen vaikutusta humanitääriseen avustukseen. Vastuualueemme on maatalous. 
-  Ruoan tuotantoon ja kulutukseen liittyvät ilmasto-, vesi-, logistiikka- ja karttamallit.
-  [gameon-viite]
-  Esimerkkitapauksemme Somalia on afrikkalainen kehitysmaa, jolla ei ole ollut 1990-luvun 
-  jälkeen toimivaa hallitusta. Yksi sen lukuisista ongelmista on se, että ruokaa ei ole 
-  tarpeeksi kaikille, johtaen nälänhätään, kulkutautien leviämiseen, ja ihmisten 
-  kuolemiseen. 
-  Tutkimuskysymyksemme on, kuinka paljon ruokaa pelloilta tulee tietyissä olosuhteissa.
-  Tutkimuksessamme olemme selvittäneet,
-  Esimerkki mallin käytöstä: avustusjärjestö haluaa tietää, miten se saisi autettua 
-  ihmisiä mahdollisimman tehokkaasti rajatuilla resursseilla. Järjestö pyörittää 
-  simulaatiota usein alkuarvoin, ja katsoo, millaisia tuloksia tulee milläkin alkuarvoilla.
-  Järjestö voi käyttää näitä tietoja hyväkseen päätöksenteossaan.
+  ilmastonmuutoksen vaikutusta humanitääriseen avustukseen. Tämän osaprojektin aiheena on maatalous. Ruoan tuotantoon ja kulutukseen liittyvät ilmasto-, vesi-, logistiikka- ja karttamallit. [gameon-viite]
+Esimerkkitapauksemme Somalia on afrikkalainen kehitysmaa, jolla ei ole ollut 1990-luvun jälkeen toimivaa hallitusta. Yksi sen lukuisista ongelmista on se, että ruokaa ei ole tarpeeksi kaikille, mikä johtaan nälänhätään, kulkutautien leviämiseen, ja ihmisten kuolemiseen. 
+Tutkimuskysymyksemme on, kuinka paljon ruokaa pelloilta tulee tietyissä olosuhteissa.
+Dataviljely?
 
   \includegraphics[width=10cm]{projectmap.png}
   
@@ -80,31 +88,17 @@
 
   \section{Ilmiö}
 
-  Maatalous on järjestelmällistä kasvin kasvattamista suurella mittakaavalla
-  ihmistarpeeseen.
-
+  Maatalous on järjestelmällistä kasvien tai karjan kasvattamista suurella mittakaavalla ihmistarpeeseen. Maanviljely on kasvien, esimerkiksi viljojen, kasvattamista.
   % maatalous yleisesti ^
+Osana tutkimusprojektikokonaisuutta Roosa Räty tutki, mitä Somaliassa syödään ja kasvatetaan.  Käytimme hänen tuloksiaan valitessamme kasvilajikkeita tutkittavaksi. Lisäksi saimme tietää, että vaikka Somaliassa juodaan paljon maitoa, naudanlihaa ei syödä. [Räty]
 
-  Roosa Räty on tutkinut, mitä Somaliassa syödään. [viittaus!] Käytimme hänen
-  tuloksiaan valitessamme kasvilajikkeita tutkittavaksi.
-  
-  Kasvien kasvamiseen vaikuttavat muun muassa sääolosuhteet (sadanta, lämpötila,
-  auringonvalon määrä) ja maaperän pH. Nämä tekijät olemme huomioineet
-  mallissamme. Jokaisella on optimiarvo, josta poiketessa sadon määrä laskee.
+Kasvien kasvamiseen vaikuttavista tekijöistä olemme ottaneet huomioon sääolosuhteet (sadanta, lämpötila, auringonvalon määrä) ja maaperän pH:n. Olemme jättäneet huomiotta muun muassa lehtien pinta-alan, haihtumisen, juurien tiheyden, leveyspiirin ja tuulen vaikutukset satoon.
 
-  Olemme todenneet mitättömiksi ja jättäneet huomiotta muun muassa lehtien
-  pinta-alan, haihtumisen, juurien tiheyde, leveyspiirin ja tuulen vaikutukset
-  satoon. Keskitymme myös maatalouteen, joten olemme jättäneet Somalian
-  karjatalouden huomioimatta.
-  
-  Lisäksi olemme huomioineet tiettyjä tilanteita, jotka aiheuttavat sen, että
-  sato kuolee. Näitä ovat rankkasateet ja tulvat.
+Lisäksi olemme huomioineet, että tulvat aiheuttavat satojen tuhoutumisen. Kuivuus on otettu huomioon sadannassa, ja joulukuusta helmikuuhun mikään ei kasva, koska on liian kuivaa.
   
   \section{Malli}
 
-  Malli ottaa alkuarvoikseen sademäärän, lämpötilan, auringonvalon määrän ja
-  maaperän pH:n. Jokainen muunnetaan prosenttikertoimeksi kasvatetun kasvin
-  mukaan. Sadon määrä saadaan kaavalla
+  Kun sadon määrää simuloidaan, käytetyt parametrit ovat sademäärä, lämpötila, auringonvalon määrä ja maaperän pH. Jokaisella on optimiarvo, jolla saadaan maksimisato. Mitä enemmän optimialueelta poiketaan, sitä enemmän sadon määrä laskee. Poikkeuksena on auringonvalo, jossa sadon määrä ei laske, jos auringonvaloa saadaan yli optimin.
 
   \begin{em}
   $ \text{sato} = (\text{pinta-ala}) \times (\text{teoreettinen maksimisato per
@@ -114,6 +108,17 @@
   \begin{em}
   $ \text{viikkokerroin} = (\text{vesikerroin}) \times (\text{lämpökerroin})
   \times (\text{valokerroin}) \times (\text{pHkerroin}) $\end{em}
+  
+  Kertoimet lasketaan kaavoilla:
+  0, jos x ≥  yläarvo tai x ≤ ala-arvo.
+  kx+b, jos ala-arvo < x < optimi tai optimi < x < yläarvo
+  1, jos x = optimi.
+  Auringonvaloille kertoimet lasketaan:
+  0, jos x ≤ ala-arvo
+  kx+b, jos ala-arvo < x < optimi
+  1, jos x ≥ optimi.
+  
+  \includegraphics[width=10cm]{coefficientgraph.png}
 
   % funktioiden kuvaus
 
@@ -125,6 +130,8 @@
 
   \subsection{Viljelykasvit}
 
+  Koska eri kasvit kasvavat optimaalisesti hyvinkin eri olosuhteissa, kerromme tässä arvoista, joita käytämme mallissamme parametrien oletusarvoina. Maissi ja vehnä ovat tarkastelussa mukana sen takia, että ne ovat yleisiä viljelyskasveja, durra on Afrikan ja Aasian kuivilla alueilla esiintyvä viljelyskasvi.  
+  
   Maissi on kasvi, joka tuottaa yleensä keltaisia siemeniä. Siemenet ovat
   syötävä osa, loput kasvista jätetään syömättä. Maissi tarvitsee kostean ja
   ravinteikkaan maaperän. Sille ideaali vesimäärä olisi \cite{cropwater} mukaan
@@ -135,23 +142,23 @@
   lämpötilajakaumaksi 20$^{\circ}$C – 40$^{\circ}$C, optimi 30$^{\circ}$C.
   Maissille sopiva pH on välillä 5.5 – 7.0 \cite{corngrowing}. Käytämme
   ideaalina näiden keskiarvoa 6.25. Auringonvalolle arvioimme optimiksi
-  8h/päivä, jakauma 6-10 tuntia päivässä. Maissi kasvaa 18 viikossa.
+  8h/päivä, minimi 6 tuntia päivässä. Maissi kasvaa 18 viikossa.
   Maksimiarvomme sadolle on 8 tonnia hehtaaria kohden \cite{iita}.
 
   Vehnä on Suomessakin kasvava vilja. Sille ideaalilämpötila olisi 19$^{\circ}$C
   - 25$^{\circ}$C \cite{wheat}, valitsimme optimiksemme 22$^{\circ}$C. Käytämme
   pH:n jakaumana 6-7:ää \cite{wheatfert}, optimi 6,5. Veden ideaalimäärä olisi
   0.31 cm/vrk \cite{cropwater}, jakauma  0.155 – 0.465 cm/vrk. \cite{growwheat}
-  mukaan vehnä tarvitsisi noin 6 tuntia auringonvaloa päivässä. Vehnä kasvaa
-  noin 15 viikossa. Vehnää tulee maksimiarvona noin 8 tonnia hehtaaria kohden
-  \cite{sri}.
+  mukaan vehnä tarvitsisi noin 6 tuntia auringonvaloa päivässä, minimi 4 tuntia 
+  päivässä. Vehnä kasvaa noin 15 viikossa. Vehnää tulee maksimiarvona noin 8 tonnia 
+  hehtaaria kohden \cite{sri}.
 
   Durra on viljalaji, joko kasvaa trooppisissa ja subtrooppisissa ilmastoissa.
   Sen vedentarve on noin 0.38 cm/vrk \cite{cropwater}, jakauma 0.19 –
   0.57 cm/vrk. Durran ideaalilämpötila on 20-40$^{\circ}$C [10], optimina
   käytimme näiden keskiarvoa 30$^{\circ}$C. Sille ideaali pH-jakauma olisi 5-8.5
   \cite{moench}, käytämme optimina keskiarvoa 6.75. Auringonvalolle arvioimme
-  optimiksi 8h/päivä, jakauma 6 – 10 tuntia päivässä. Durra kasvaa noin 18
+  optimiksi 8h/päivä, minimi 6 tuntia päivässä. Durra kasvaa noin 18
   viikossa. Sen teoreettinen maksimisato on 3 tonnia / hehtaari \cite{wylie}.
 
   \subsection{Maidon tuotanto}
@@ -170,9 +177,7 @@
 
   \section{Mallin käyttö simulaatiossa}
 
-  Päätimme varioida maissin ja durran kasvun optimilämpötiloja ja -vesimääriä.
-  Tällä pystyimme simuloimaan mahdollisten geeniviljeltyjen lajikkeiden
-  vaikutusta Somalian olohin.
+  Päätimme varioida maisssin ja durran kasvun optimilämpötiloja ja -vesimääriä. Tällä pystyimme simuloimaan erilaisten lajikkeiden vaikutusta Somalian oloihin. Koesuunnittelun teki Mirjam Kauppila.
 
   Vaihteluväli lämpötilan optimille oli molemmissa tapauksissa 30-40$^{\circ}$C,
   siten että lämpötilajaauman ääriarvot olivat 10$^{\circ}$ päässä optimista.
@@ -190,13 +195,15 @@
 
   \chapter{Johtopäätökset}
 
-  malli hyvä, koska
+  saimme xyz tulokset, järkevyys? mielenkiintoisuus? mallin kehitys? käyttökelpoisuus? käytettävyys?
   
-  paitsi että täyttä kuraa (kesken, yksinkertaistettu), asiat A-Ö, 1-9 ja
-  loputkin huonosti parametroitu tai jätetty huomiotta jne; karjatalous!
-  tarvitsee enemmän/parempaa lähtödataa
-  
-  siitä huolimatta: auttaa ymmärtämistä, osa kokonaisuutta, toimii ihan OK
+malli hyvä, koska
+
+paitsi että täyttä kuraa (kesken, yksinkertaistettu), asiat A-Ö, 1-9 ja loputkin huonosti parametroitu tai jätetty huomiotta jne; karjatalous! tarvitsee enemmän/parempaa lähtödataa
+
+siitä huolimatta: auttaa ymmärtämistä, osa kokonaisuutta, toimii ihan OK
+
+Esimerkki mallin käytöstä: avustusjärjestö haluaa tietää, miten se saisi autettua ihmisiä mahdollisimman tehokkaasti rajatuilla resursseilla. Järjestö pyörittää simulaatiota usein alkuarvoin, ja katsoo, millaisia tuloksia tulee milläkin alkuarvoilla. Järjestö voi käyttää näitä tietoja hyväkseen päätöksenteossaan.
 
   \begin{thebibliography}{9}
   
