@@ -17,7 +17,7 @@
 \linespread{1.3}
 
 \title{Mulla on nälkä!}
-\subtitle{Ruoan tuotanto Somaliassa hörpäkkeiden funktiona}
+\subtitle{Maatalouden tuotanto Somaliassa sääolosuhteiden funktiona}
 \author{Jaakko Hannikainen \and Cliona Shakespeare}
 \date{\today}
 \publishers{Valkeakosken Tietotien lukio / Päivölän Kansanopisto\\
@@ -36,21 +36,22 @@
   % Mitä: Somalia on kehitysmaa, ongelmia: ruokaa ei ole tarpeeksi jne,
   % ongelmien mallintamiseksi tämä simulaatio
   
-  Somalia on afrikkalainen kehitysmaa, jolla ei ole ollut 1990-luvun jälkeen
-  toimivaa hallitusta. Eräs sen lukuisista ongelmista on se, että ruokaa ei ole
-  tarpeeksi kaikille, johtaen nälänhätään, kulkutautien leviämiseen, ja ihmisten
-  kuolemiseen. Tutkimuskysymyksemme on, kuinka paljon ruokaa pelloilta tulee
-  tietyissä olosuhteissa.
-  
-  Tämä malli on toteutettu osana mallikokonaisuutta, jossa mallinnetaan
-  humanitaarisen avustuksen vaikutusta Somalian tilanteeseen. Ruoan tuotantoon
-  liittyvät ilmasto-, vesi-, logistiikka- ja karttamallit.
-  
-  Esimerkki mallin käytöstä: avustusjärjestö haluaa tietää, miten se saisi
-  autettua ihmisiä mahdollisimman tehokkaasti rajatuilla resursseilla. Järjestö
-  pyörittää simulaatiota usein alkuarvoin, ja katsoo, millaisia tuloksia tulee
-  milläkin alkuarvoilla. Järjestö voi käyttää näitä tietoja hyväkseen
-  päätöksenteossaan.
+  Maailman kriisialueilla avustusjärjestöt haluavat tietää, miten ne saisivat 
+  autettua ihmisiä mahdollisimman tehokkaasti rajatuilla resursseilla. Tätä 
+  varten olemme osallistuneet mallintamisprojektiin \cite{scythe}, jossa mallinnetaan
+  ilmastonmuutoksen vaikutusta humanitääriseen avustukseen. Vastuualueemme on maatalous. 
+  Ruoan tuotantoon ja kulutukseen liittyvät ilmasto-, vesi-, logistiikka- ja karttamallit.
+  [gameon-viite]
+  Esimerkkitapauksemme Somalia on afrikkalainen kehitysmaa, jolla ei ole ollut 1990-luvun 
+  jälkeen toimivaa hallitusta. Yksi sen lukuisista ongelmista on se, että ruokaa ei ole 
+  tarpeeksi kaikille, johtaen nälänhätään, kulkutautien leviämiseen, ja ihmisten 
+  kuolemiseen. 
+  Tutkimuskysymyksemme on, kuinka paljon ruokaa pelloilta tulee tietyissä olosuhteissa.
+  Tutkimuksessamme olemme selvittäneet,
+  Esimerkki mallin käytöstä: avustusjärjestö haluaa tietää, miten se saisi autettua 
+  ihmisiä mahdollisimman tehokkaasti rajatuilla resursseilla. Järjestö pyörittää 
+  simulaatiota usein alkuarvoin, ja katsoo, millaisia tuloksia tulee milläkin alkuarvoilla.
+  Järjestö voi käyttää näitä tietoja hyväkseen päätöksenteossaan.
 
   \includegraphics[width=10cm]{projectmap.png}
   
@@ -67,6 +68,15 @@
   % tulevaisuuden ennustaminen on kivaa – miksi?
   
   \chapter{Aineisto ja menetelmät}
+  
+  \section{Dataviljely}
+  
+  Dataviljely on menetelmä, joka perustuu siihen, että mahdollisimman yksinkertaista
+  mallia ajetaan mahdollisimman monta kertaa. Tästä tulee jakauma tuloksia, joiden
+  analyysillä voidaan vetää johtopäätöksiä mallinnetusta ilmiöstä. \cite{assimple}
+  Rapid scenario prototyping on tärkeä osa dataviljelyä. Siinä luotua mallia ajetaan
+  yksillä parametreillä testitilanteessa, siten, että sitä aina parannetaan saaujen
+  tulosten perusteella. [viite asd]
 
   \section{Ilmiö}
 
@@ -189,6 +199,14 @@
   siitä huolimatta: auttaa ymmärtämistä, osa kokonaisuutta, toimii ihan OK
 
   \begin{thebibliography}{9}
+  
+  	\bibitem{scythe}
+  	Ted Meyer, Merikki Lappi et al.
+  	\emph{Climate Change and Humanitarian Assistance: challenges and complications}.
+  	
+  	\bibitem{assimple}
+  	Paul J. Sánchez.
+  	\emph{As Simple as Possible, but no Simpler: a Gentle Introduction to Simulation Modeling}
 
     \bibitem{cropwater}
     Wright \& Killer.
